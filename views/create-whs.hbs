@@ -1,0 +1,96 @@
+<h1>Добавить ВХС</h1>
+<!--<form onsubmit="alert('submit!');return false">-->
+  <form >
+<!--<form method="post" action="/news"  enctype="multipart/form-data" >-->
+  <div class="mb-3">
+    <label for="cod_whsInput" class="form-label">Код ВХС </label>
+    <input class="form-control" name="cod_whs" id="cod_whsInput">
+  </div>
+  <div class="mb-3">
+    <label for="name_whsInput" class="form-label">Наименование ВХС</label>
+    <textarea class="form-control" name="name_whs" id="name_whsInput" rows="3" aria-valuetext="Tect"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="cod_okatoInput" class="form-label">Код ОКАТО</label>
+    <input class="form-control" name="cod_okato" id="cod_okatoInput">
+  </div>
+  <div class="mb-3">
+    <label for="dateInput" class="form-label">Дата ввода в эксплуатацию</label>
+    <input class="form-control" name="dateInput" id="dateInput" >
+  </div>
+  <!--<div class="mb-3" id="dateInput" name="createdAt">Дата создания{{this.value}}</div>-->
+<!--<div class="form-group">
+    <label for="cover">Обложка новости</label>
+    <input type="file" class="form-control-file" id="cover" name="cover">
+</div>-->
+ <input type="button" value="Добавить" onclick = "sendForm()">
+    <!--<button type="button" class="btn btn-primary" onclick=sendForm()>Создать</button>-->
+    <!--<input type="hidden" name="redirect" value="/news/all">-->
+</form>
+
+<script >
+  
+  //function sendForm(){
+    //var ff = ('form')[0];
+    //console.info(ff);
+    //this.form.submit()
+    //setTimeout(window.location.href = '/news/all', 5000);
+  //}
+
+  /*function sendForm() {
+    alert('test');
+    window.location.href = '/news/all'
+  }*/
+
+  
+  </script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  /*Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+  });
+  document.getElementById('dateInput').value = new Date().toDateInputValue();*/
+
+  function sendForm() {
+    var data = new FormData($('form')[0]);
+    //const imgfls = data.files('cover');
+    //console.log('data.files', imgfls);
+    //const img = data.get('cover');
+    //console.log('data.get', imgfls);
+    const formDataObj = {};
+    data.forEach((value, key) => (formDataObj[key] = value));
+    //formDataObj.cover = data.file;
+    //formDataObj.cover = {};
+    console.log("formDataObj ", formDataObj);
+    //console.log("data.cover", data.cover);
+    console.log(JSON.stringify(formDataObj));
+
+
+    fetch('/whs', {
+      method: 'POST', // Здесь так же могут быть GET, PUT, DELETE
+      body: JSON.stringify(formDataObj), // Тело запроса в JSON-формате
+      headers: {
+        // Добавляем необходимые заголовки
+        'Content-type': 'application/json; charset=UTF-8'
+      },
+    })
+      //.then((response) => response.json())
+      
+      .then(function() {
+        alert('Новость добавлена');
+        //window.location.href = '/whs/all';
+        })
+      .catch(error => alert(error.message));
+
+    
+    
+  }
+
+  
+
+</script>
+

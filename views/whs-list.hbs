@@ -1,0 +1,30 @@
+
+{{#if whs}}
+<h1>Список ВХС</h1>
+  <div class="row">
+    {{#each whs}}
+      <div class="col-lg-6">
+        <div class="card">
+          <!--<img src='http://localhost:3000{{this.cover}}' class="card-img-top" style="height: 200px; object-fit: cover;" alt=''>-->
+          <div class="card-body">
+            {{this.user.firstName}}
+            <h6 class="card-cod_whs">Код ВХС {{this.cod_whs}}</h5>
+            <!--<h6 class="card-subcod_whs mb-2 text-muted">Автор: {{this.cod_okato}}</h6>
+            <h6 class="card-subcod_whs mb-2 text-muted">Дата создания: {{this.createdAt}}</h6>-->
+            <p class="card-text">Наименование ВХС {{this.name_whs}}</p>
+            <p class="card-text">Дата ввода в эксплуатацию {{this.dateInput}}</p>
+            <p class="card-text">Код ОКАТО {{this.cod_okato}}</p>
+            <div style="display: flex; justify-content: space-around;">
+            <a href="/whs/detail/{{this.id}}">Детализация</a>
+            <a href="/whs/edit/{{this.id}}">Редактировать</a>
+            <a href="/whs/api/{{this.id}}">Удалить</a>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+    {{/each}}
+  </div>
+{{else}}
+  <h1>Список пуст!</h1>
+{{/if}}

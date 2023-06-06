@@ -1,0 +1,27 @@
+
+   {{#if comments}}  
+
+  <div class="row">
+    
+    {{#each comments}}
+      <div class="col-lg-6">
+        <div class="card" style="flex-direction: row; align-items: center;">
+            <div >
+                <!--<img src='http://localhost:3000{{this.avatar}}' class="card-img-top" style="height: 50px; width: 50px; objectfit: cover;" alt=''>-->
+            </div>
+          
+          <div class="card-body">
+            <!--<h5 class="card-cod_whs">{{this.cod_whs}}</h5>-->
+            <h6 class="card-subcod_whs mb-2 text-muted">Автор: {{this.cod_okato}}</h6>
+            <!--<h6 class="card-subcod_whs mb-2 text-muted">Дата создания: {{this.createdAt}}</h6>-->
+            <p class="card-text">{{this.message}}</p>
+            <!--<a href="/news/api/detail/{{this.id}}">Детализация</a>-->
+          </div>
+        </div>
+      </div>
+       
+    {{/each}}
+  </div>
+    {{else}}
+  <h1>Список комментариев пуст!</h1>
+    {{/if}}

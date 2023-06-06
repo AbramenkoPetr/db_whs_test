@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <cod_whs>App</cod_whs>
+</head>
+<body>
+<ul>
+  {{#each messages}}
+    <li>
+      {{#if this.cod_okato}}
+        {{this.cod_okato}}
+      {{else}}
+        Имени нет
+      {{/if}}
+      <h3>{{this.message}}</h3>
+    </li>
+  {{/each}}
+
+</ul>
+
+</body>
+</html>

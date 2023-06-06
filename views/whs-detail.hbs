@@ -1,0 +1,20 @@
+
+  <div class="row">
+    
+      <div class="col-lg-6">
+        <div class="card">
+          <!--<img src='http://localhost:3000{{this.cover}}' class="card-img-top" style="height: 200px; object-fit: cover;" alt=''>-->
+          <div class="card-body">
+            <p class="card-text">Наименование ВХС: {{this.name_whs}}</p>
+            <h6 class="card-cod_whs">Код ВХС: {{this.cod_whs}}</h6>
+            <h6 class="card-subcod_whs mb-2 text-muted">Код ОКАТО: {{this.cod_okato}}</h6>
+            <h6 class="card-subcod_whs mb-2 text-muted">Дата ввода в эксплуатацию: {{this.dateInput}}</h6>
+            
+           <!-- <h6 class="card-text">Количество просмотров {{this.countView}}</h6>-->
+            
+          </div>
+        </div>
+      </div>
+    
+  </div>
+<script>console.log('this.cod_whs ', `{{this.cod_whs}}`)</script>

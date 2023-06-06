@@ -1,0 +1,47 @@
+<h1>Создание комментария</h1>
+<form method="post" action="/api/1" enctype="multipart/form-data"><!--//**-->
+  
+  <div class="mb-3">
+    <label for="name_whsInput" class="form-label">Комментарий</label>
+    <textarea class="form-control" name="message" id="name_whsInput" rows="3" value="Добавленная новость"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="cod_okatoInput" class="form-label">Автор</label>
+    <input class="form-control" name="cod_okato" id="cod_okatoInput" value="Петр">
+  </div>
+  
+  <div class="form-group">
+    <label for="avatar">Аватар</label>
+    <input  class="form-control" id="cover" name="avatar" value="/news-static/avatar.png">
+  </div>
+  <div class="mb-3" style="display: none;">
+    <label for="idInput" class="form-label">idNews</label>
+    <input class="form-control" name="idNews" id="idInput" value="{{this.id}}">
+  </div>
+<!--  <input type="submit" value="Создать">-->
+  <button type="button" class="btn btn-primary" onclick='sendForm()'>Создать</button>
+</form>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+ var id = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')[0];
+    console.log('hashes', id)
+  function sendForm() {
+    var data = new FormData($('form')[0]);
+      console.log('data', data)
+    $.ajax({
+      url: `/comments/api/${id})`,
+      data: data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      method: 'POST',
+      success: function() {
+        alert('Комментарий создан')
+        window.location.href = `/comments/api/details/${id}`;//**
+      }
+    });
+  }
+</script>
